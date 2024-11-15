@@ -17,6 +17,8 @@ func SetupRoutes(router *gin.Engine) {
 		{
 			todo.POST("/", controllers.CreateTodo)
 			todo.GET("/", controllers.GetTodos)
+			todo.PATCH("/:id/complete", controllers.CompleteTodo)
+			todo.DELETE("/:id/delete", controllers.DeleteTodo)
 		}
 	}
 }

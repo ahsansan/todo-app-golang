@@ -1,11 +1,14 @@
 package models
 
-import "gorm.io/gorm"
+import "time"
 
 type Todo struct {
-	gorm.Model
-	Title     string
-	Content   string
-	IsCompleted bool
-	CreatedBy uint
+	ID          uint      `gorm:"primaryKey"`
+	Title       string    `json:"title"`
+	Content string    `json:"content"`
+	IsCompleted bool      `json:"is_completed"`
+	CreatedBy   uint      `json:"created_by"`
+	// User        User      `gorm:"foreignKey:CreatedBy"`
+	CreatedAt   time.Time
+	UpdatedAt   time.Time
 }

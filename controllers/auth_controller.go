@@ -16,6 +16,7 @@ var JwtKey = []byte("BelalangYangMembangkang")
 type Claims struct {
 	ID       uint   `json:"id"`
 	Username string `json:"username"`
+	Email	string `json:"email"`
 	jwt.StandardClaims
 }
 
@@ -65,8 +66,9 @@ func Login(c *gin.Context) {
 	// Generate JWT Token
 	expirationTime := time.Now().Add(24 * time.Hour)
 	claims := &Claims{
-		ID:       user.ID, // Tambahkan ID pengguna
+		ID:       user.ID,
 		Username: user.Username,
+		Email: user.Email,
 		StandardClaims: jwt.StandardClaims{
 			ExpiresAt: expirationTime.Unix(),
 		},
